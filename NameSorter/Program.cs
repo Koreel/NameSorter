@@ -46,12 +46,28 @@ namespace NameSorter
 
 
                 while (NS_ProgramHelper.displayTaskComplete == false && NS_ProgramHelper.writeTaskComplete == false )
-
                 {
-                    
-                    readUserInput.ReadUserInput(Console.ReadLine());
+                    string input = Console.ReadLine();
+                
+                      
+                    if (input == "EXIT")
+                    {
+                        shouldExit = true;
+                       
+                        NS_ProgramHelper.displayTaskComplete = true;
+                        NS_ProgramHelper.writeTaskComplete = true;
+
+                        break;
+                    }
+                    else
+                    {
+                        readUserInput.ReadUserInput(input);
+                    }
+
+
                     if (NS_ProgramHelper.displayTaskComplete == true && NS_ProgramHelper.writeTaskComplete == true)
                     {
+                        log.Log("Task completed!");
                         break;
                     }
                    
@@ -62,6 +78,7 @@ namespace NameSorter
                     string answer = Console.ReadLine();
                     if (answer == "Y")
                     {
+                        
                         shouldExit = true;
                         log.Log("Exiting program...");
                         break;
@@ -70,9 +87,9 @@ namespace NameSorter
                     {
                         log.Log("Resetting...");
                         NS_ProgramHelper.Reset();
-
+                        shouldExit = false;
                        //new  lines
-                        log.Log("\n\n\n" + GreetUser());
+                        log.Log(".\n.\n.\n" + GreetUser());
                         break;
                         
                     }
@@ -95,12 +112,12 @@ namespace NameSorter
 
       public static string GreetUser()
         {
-            return "Welcome to the Name Sorter!\r\nTo sort a list of names, please enter the command:\r\nname-sorter <filename>\r\n\r\nYou can provide a relative or absolute path to the file, or use ./ to specify the current directory.\r\n";
+            return "Welcome to the Name Sorter!\r\nTo sort a list of names, please enter the command:\r\nname-sorter <filename>\r\n\r\nYou can provide a relative or absolute path to the file, or use ./ to specify the current directory.\r\n\r\nTo exit the software, type EXIT to access the exit prompt.\r\n";
         }
         
         public static string ExitPrompt()
         {
-            return "Task completed! Do you want to exit? (Y/N)";
+            return "Do you want to exit? (Y/N)";
         }
         
     }
