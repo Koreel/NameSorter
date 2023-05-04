@@ -1,0 +1,12 @@
+Plan of Attack
+
+Types of actions required
+ 
+ 1. Make a console display that tells user to input function and directory to text file
+
+ 2. Make a command prompt that can searches directory and opens file through command prompt
+	 This will always return success or unsuccessful feedback.
+	
+	This will also invole making separate scripts that breaks apart  
+
+3. Once txt file found, 
