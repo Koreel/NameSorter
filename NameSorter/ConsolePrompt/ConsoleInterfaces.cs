@@ -22,6 +22,11 @@ namespace Name_Sorter.ConsolePrompt
         string GetFileName(string fileName);
     }
 
+    public interface IProjectDirectory
+    {
+        public string GetProjectDirectory();
+    }
+
     public interface IFileReader
     {
         public string FileContentsString(string _directory);

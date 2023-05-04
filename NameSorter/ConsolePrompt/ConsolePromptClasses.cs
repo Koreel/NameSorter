@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Name_Sorter.ConsolePrompt
 {
-    public class FileLocator : IFileLocator
+    public class FileLocator : IFileLocator, IProjectDirectory
     {
 
         public bool fileExists { get; set; }= false;
@@ -30,7 +30,7 @@ namespace Name_Sorter.ConsolePrompt
             if (fileName.StartsWith("./") || fileName.StartsWith("../"))
             {
                 // Get the absolute path of the parent directory
-                string executableDirectory = AppDomain.CurrentDomain.BaseDirectory;
+                string executableDirectory = GetProjectDirectory();
                 filePath = Path.Combine(executableDirectory, fileName.TrimStart('.', '/', '\\'));
 
                 
@@ -59,17 +59,46 @@ namespace Name_Sorter.ConsolePrompt
             }
             else
             {
-                return "File Does not exist, pleast try inputing the correct name";
+                return "File Does not exist, please try inputting the correct name";
             }
-
-          
-
-
-          
 
             //return filePath;
 
         }
+
+        public string GetProjectDirectory()
+        {
+            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+
+            string searchPattern;
+            if (OperatingSystem.IsLinux() || OperatingSystem.IsMacOS())
+            {
+                searchPattern = "*.fsproj"; // or use "*.vbproj" or your project's file extension
+            }
+            else
+            {
+                searchPattern = "*.csproj";
+            }
+
+
+            // Search for the project file in the parent directories
+            string directory = baseDirectory;
+            while (directory != null)
+            {
+                string[] files = Directory.GetFiles(directory, searchPattern);
+                if (files.Length > 0)
+                {
+                    return directory;
+                }
+
+                directory = Path.GetDirectoryName(directory);
+            }
+
+            // Project file not found
+            return null;
+        }
+
+
     }
 
     public class UserInputReader : IUserInputReader

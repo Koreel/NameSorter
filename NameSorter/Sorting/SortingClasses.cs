@@ -55,9 +55,8 @@ namespace Name_Sorter.Sorting
     {
         public List<IPerson> SortNameList(List<IPerson> sortedList )
         {
-            return sortedList.OrderBy(IPerson => IPerson.lastName).ToList();
+            return  sortedList.OrderBy(person => person.lastName).ThenBy(person => person.firstName).ToList();
 
-         
         }
     }
 
