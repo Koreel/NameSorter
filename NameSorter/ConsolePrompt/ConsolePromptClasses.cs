@@ -90,6 +90,15 @@ namespace Name_Sorter.ConsolePrompt
                 {
                     return directory;
                 }
+                else // if linux or mac returns null default to .csproj
+                {
+                    files = Directory.GetFiles(directory, "*.csproj");
+                    if (files.Length > 0)
+                    {
+                        return directory;
+                    }
+
+                }
 
                 directory = Path.GetDirectoryName(directory);
             }
