@@ -19,7 +19,6 @@ namespace Name_Sorter.FactoriesAndRegistrations
     //name factory that returns type based off the number of name parametres
     public class FullNameFactory : IPersonFactory
     {
-
         public FullNameFactory()
         {
             PersonList = new List<IPerson>();
@@ -42,40 +41,26 @@ namespace Name_Sorter.FactoriesAndRegistrations
                     //return Invalid Person
                     return new InvalidPerson(nameParts[0]);
                     break;
-
-
             }
 
-            
         }
-
         public List<IPerson> PersonList { get; set; }
 
-
     }
-
-
-  
-
 
     //registration
     public class MyServiceRegistration
     {
         public static void RegisterServices(IServiceCollection services)
-        {
-
-            
+        {           
 
             //Console Classes Factory
             services.AddSingleton<IFileReader, GetFileContents>();
             services.AddSingleton<ILogger, Console_Logger>();
             services.AddSingleton<IFileLocator, FileLocator>();
            
-
             services.AddSingleton<IConsoleFunctionsFactory, ConsoleFactory>();
-
-            services.AddScoped<IUserInputReader,UserInputReader>();
-       
+            services.AddScoped<IUserInputReader,UserInputReader>();     
 
 
             //Name Class Factory
@@ -87,8 +72,6 @@ namespace Name_Sorter.FactoriesAndRegistrations
             services.AddScoped<INameExtractor, ExtractNamesOnString>();
 
             services.AddSingleton<IDisplayNames>(new DisplayNamesOnList());
-
-
 
         }
     }

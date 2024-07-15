@@ -36,18 +36,14 @@ namespace Name_Sorter.NameClasses
         public string middleName { get; set; }
         public FullNameWithMiddle(string _firstName, string _middleName, string _lastName) : base(_firstName, _lastName)
         {
-           
-                firstName = _firstName;
-                middleName = _middleName;
-                lastName = _lastName;
-             
+            firstName = _firstName;
+            middleName = _middleName;
+            lastName = _lastName;
         }
 
         public override string MyName()
         {
-
             return $"{firstName} {middleName} {lastName}";
-
         }
 
 
@@ -56,13 +52,10 @@ namespace Name_Sorter.NameClasses
     {
         public string firstName { get; set; }
         public string lastName { get; set; }
-
-
         private string invalidInput;
 
         public InvalidPerson(string input)
-        {   
-           
+        {             
             invalidInput = input;
         }
 

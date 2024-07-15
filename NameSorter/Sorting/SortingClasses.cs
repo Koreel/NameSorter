@@ -20,7 +20,6 @@ namespace Name_Sorter.Sorting
     {
         public List<IPerson> ExtractNames(string fileText)
         {
-
             var services = new ServiceCollection();
             MyServiceRegistration.RegisterServices(services);
             var serviceProvider = services.BuildServiceProvider();
@@ -33,21 +32,21 @@ namespace Name_Sorter.Sorting
 
 
             if (fullNameService != null)
+            {
+                foreach (string line in lines)
                 {
-                    foreach (string line in lines)
-                    {
-                        string[] nameParts = line.Split(' ');
+                    string[] nameParts = line.Split(' ');
 
-                        fullNameService.PersonList.Add(fullNameService.CreatePerson(nameParts));
-                    }
+                    fullNameService.PersonList.Add(fullNameService.CreatePerson(nameParts));
                 }
-                else
-                {
-                    throw new Exception("Services returned null, please ensure it's cretated");
-                }
+            }
+            else
+            {
+                throw new Exception("Services returned null, please ensure it's cretated");
+            }
 
-                return fullNameService.PersonList;
-           
+            return fullNameService.PersonList;
+
         }
     }
        
