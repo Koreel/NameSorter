@@ -1,6 +1,6 @@
 # Name_Sorter
-Name Sorter README
-This is the documentation for the Name Sorter program. The program is designed to sort a list of names that are provided in a text file.
+
+This is the documentation for the Name Sorter program. The program is designed to sort a list of names that are provided in a text file. This project was made to showcase my understanding of SOLID principles with .NET.
 
 To use the program, follow these instructions:
 
