@@ -14,7 +14,6 @@ namespace Name_Sorter.ConsolePrompt
 {
     public class FileLocator : IFileLocator, IProjectDirectory
     {
-
         public bool fileExists { get; set; }= false;
         public string GetFileName(string fileName)
         {
@@ -112,17 +111,12 @@ namespace Name_Sorter.ConsolePrompt
 
     public class UserInputReader : IUserInputReader
     {
-
-
-
         public void ReadUserInput(string readLine)
         {
             var services = new ServiceCollection();
             MyServiceRegistration.RegisterServices(services);
             var serviceProvider = services.BuildServiceProvider();
-            var log = serviceProvider.GetService<ILogger>();
-
-           
+            var log = serviceProvider.GetService<ILogger>();           
 
             var consoleFunctionsFactory = serviceProvider.GetService<IConsoleFunctionsFactory>();
 
@@ -142,13 +136,9 @@ namespace Name_Sorter.ConsolePrompt
                 var consoleFunction = consoleFunctionsFactory.GetConsoleFunctionClass(command, fileName);
 
                 consoleFunction.InputFunction();
-            }
-
-         
+            }        
 
         }
-
-
     }
 
     public class Console_Logger : ILogger
@@ -162,10 +152,8 @@ namespace Name_Sorter.ConsolePrompt
 
     public class GetFileContents : IFileReader
     {
-
         public string FileContentsString(string fileName)
-        {
-           
+        {           
 
             var services = new ServiceCollection();
             MyServiceRegistration.RegisterServices(services);
@@ -193,8 +181,7 @@ namespace Name_Sorter.ConsolePrompt
 
 
     public class WriteNameOnFile : INameListWriteFile
-    {
-      
+    {      
         public void GenerateFile(List<IPerson> nameList, string _directory)
         {
             string parentDirectory = Directory.GetParent(_directory).FullName;
@@ -228,13 +215,9 @@ namespace Name_Sorter.ConsolePrompt
             }
             catch (Exception ex)
             {
-                // Handle the exception here
+                log.Log("Something went wrong exception thrown: "+ ex.Message);
             }
-
-        }
-
-
-  
+        }  
     }
 
     //static class to oversee program
@@ -249,11 +232,5 @@ namespace Name_Sorter.ConsolePrompt
             displayTaskComplete = false;
             writeTaskComplete = false;
         }
-
-
     }
-
-
-
-
 }

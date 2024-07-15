@@ -8,9 +8,6 @@ using Name_Sorter.NameClasses;
 
 namespace Name_Sorter.Sorting
 {
-  
-
-   
 
     public interface INameExtractor
     {
@@ -23,11 +20,8 @@ namespace Name_Sorter.Sorting
     }
 
     public interface IDisplayNames
-    {
-    
-        
+    {  
         public void DisplayNameList(List<IPerson> nameList);
     }
-
 
 }

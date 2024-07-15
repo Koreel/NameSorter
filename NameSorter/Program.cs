@@ -11,40 +11,24 @@ using System.Runtime.CompilerServices;
 
 namespace NameSorter
 {
-
-
     class Program
-    {
-    
+    { 
 
         static void Main(string[] args)
         {
 
             bool shouldExit = false;
 
-            
+            var services = new ServiceCollection();
+            MyServiceRegistration.RegisterServices(services);
+            var serviceProvider = services.BuildServiceProvider();
 
-                var services = new ServiceCollection();
-                MyServiceRegistration.RegisterServices(services);
-                var serviceProvider = services.BuildServiceProvider();
-
-               
-                var log = serviceProvider.GetService<ILogger>();
-              
-               var readUserInput = serviceProvider.GetService<IUserInputReader>();
-               
-
-            var fileWriter = serviceProvider.GetService<INameListWriteFile>();
-            var displayNames = serviceProvider.GetService<IDisplayNames>();
-
+            var log = serviceProvider.GetService<ILogger>();
+            var readUserInput = serviceProvider.GetService<IUserInputReader>();
             log.Log(GreetUser());
-
 
             while (!shouldExit)
             {
-
-
-
                 while (NS_ProgramHelper.displayTaskComplete == false && NS_ProgramHelper.writeTaskComplete == false )
                 {
                     string input = Console.ReadLine();
@@ -77,8 +61,7 @@ namespace NameSorter
                     log.Log(ExitPrompt());
                     string answer = Console.ReadLine();
                     if (answer == "Y")
-                    {
-                        
+                    {                        
                         shouldExit = true;
                         log.Log("Exiting program...");
                         break;
@@ -100,13 +83,7 @@ namespace NameSorter
 
                     Console.ReadKey();
                 }
-
-
             }
-          
-           
-          
-            
             Console.ReadLine();
         }
 

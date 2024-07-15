@@ -43,8 +43,6 @@ namespace Name_Sorter.ConsolePrompt
                 default:
                     
                     return new  ConsoleCommand_Error("Wrong input, try again");
-
-                    break;
             }
         }
     }

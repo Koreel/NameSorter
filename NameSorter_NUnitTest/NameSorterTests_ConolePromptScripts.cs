@@ -19,9 +19,6 @@ namespace NameSorter_NUnitTest
         public void Setup()
         {
 
-          
-
-
         }
 
         [Test]
