@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Name_Sorter.ConsolePrompt;
-using Name_Sorter.FactoriesAndRegistrations;
+using Name_Sorter.Registrations;
 using Name_Sorter.NameClasses;
 using Name_Sorter.Sorting;
 using System.ComponentModel;
