@@ -8,10 +8,8 @@ using System.Xml.Linq;
 
 namespace Name_Sorter.NameClasses
 {
-    //name classes
     public class FullName : IPerson
     {
-
         public string firstName { get; set; }
         public string lastName { get; set; }
 
@@ -27,12 +25,10 @@ namespace Name_Sorter.NameClasses
             return $"{firstName} {lastName}";
             
         }
-
     }
 
     public class FullNameWithMiddle : FullName
     {
-
         public string middleName { get; set; }
         public FullNameWithMiddle(string _firstName, string _middleName, string _lastName) : base(_firstName, _lastName)
         {
@@ -45,8 +41,6 @@ namespace Name_Sorter.NameClasses
         {
             return $"{firstName} {middleName} {lastName}";
         }
-
-
     }
     public class InvalidPerson : IPerson
     {
@@ -64,6 +58,4 @@ namespace Name_Sorter.NameClasses
             return $"Invalid input: {invalidInput}";
         }
     }
-
-
 }

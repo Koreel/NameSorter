@@ -1,8 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Primitives;
-using Name_Sorter.FactoriesAndRegistrations;
+using Name_Sorter.Factories;
 using Name_Sorter.NameClasses;
 using Name_Sorter.Sorting;
+using Name_Sorter.Registrations;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

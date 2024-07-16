@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Name_Sorter.FactoriesAndRegistrations
+namespace Name_Sorter.Factories
 {
     public interface IPersonFactory
     {

@@ -5,17 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Name_Sorter.NameClasses;
+using Name_Sorter.Factories;
 using Name_Sorter.ConsolePrompt;
 using Microsoft.Extensions.DependencyInjection;
-using Name_Sorter.FactoriesAndRegistrations;
+using Name_Sorter.Registrations;
 using System.Text.RegularExpressions;
 
 namespace Name_Sorter.Sorting
 {
-  
-
-   
-
     public class ExtractNamesOnString : INameExtractor
     {
         public List<IPerson> ExtractNames(string fileText)
@@ -60,8 +57,7 @@ namespace Name_Sorter.Sorting
     }
 
     public class DisplayNamesOnList : IDisplayNames
-    {
-     
+    {     
         public void DisplayNameList(List<IPerson> displayList)
         {
             var services = new ServiceCollection();
